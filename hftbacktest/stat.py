@@ -339,8 +339,7 @@ class Stat:
         mid = pd.Series(self.mid, index=dt_index)
 
         if capital is not None:
-            ((mid / mid[0] - 1).resample(resample).last() * 100).plot(ax=axs[0], style='grey', alpha=0.5)
-            (rs_equity / capital * 100).plot(ax=axs[0])
+            ((mid / mid.iloc[0] - 1).resample(resample).last() * 100).plot(ax=axs[0], style='grey', alpha=0.5)            (rs_equity / capital * 100).plot(ax=axs[0])
             (rs_equity_wo_fee / capital * 100).plot(ax=axs[0])
             axs[0].set_ylabel('Cumulative Returns (%)')
         else:
